@@ -1,0 +1,2 @@
+# Mashkul
+Arabic Text Diacritization
