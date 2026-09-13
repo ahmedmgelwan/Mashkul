@@ -5,7 +5,7 @@ import requests
 API_URL = PathConfig.api_url
 
 st.set_page_config(page_title="Mashkul - مَشْكُول", page_icon="✒️")
-st.title("✒️ Moshakeel — تشكيل النصوص العربية تلقائيًا")
+st.title("✒️ Mashkul - مَشْكُول")
 text = st.text_area("اكتب النص من غير تشكيل:", height=150, placeholder="ذهب الطالب الى المدرسة")
 
 if st.button("شكّل النص", type="primary"):
