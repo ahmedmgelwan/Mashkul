@@ -1,10 +1,3 @@
-"""
-رفع الموديل والتوكنايزر على Hugging Face Hub.
-
-الاستخدام:
-    hf auth login   # أول مرة بس
-    python -m scripts.upload_to_hub --repo-id your-username/moshakeel
-"""
 import argparse
 
 from huggingface_hub import create_repo, upload_file
