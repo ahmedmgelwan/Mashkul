@@ -25,7 +25,9 @@ class Diacritizer:
         return cls(model, tokenizer, device)
 
     def diacritize(self, text: str, window_size: int = data_config.window_size) -> str:
-        diacritizable_positions, char_ids = self._split_known_chars(text)
+        chars, _ = self.tokenizer._extract_chars_and_labels(text)
+        clean_text = "".join(chars)
+        diacritizable_positions, char_ids = self._split_known_chars(clean_text)
 
         full_pred_labels: List[int] = []
         with torch.no_grad():
@@ -36,13 +38,13 @@ class Diacritizer:
                 preds = logits.argmax(dim=1)
                 full_pred_labels.extend(preds[0].cpu().tolist())
 
-        result = list(text)
+        result = list(clean_text)
         for pos, label_id in zip(diacritizable_positions, full_pred_labels):
             label = self.tokenizer.index_to_label.get(label_id, "")
             if label == "<PAD>":  # نظريًا نادر جدًا مع موديل مدرب، لكن لازم نحميه
                 label = ""
             result[pos] = result[pos] + label
-
+        print(len("".join(result)))
         return "".join(result)
 
     def _split_known_chars(self, text: str) -> Tuple[List[int], List[int]]:
