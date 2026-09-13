@@ -1,4 +1,4 @@
-# Mashkul (مشكول) — Arabic Text Diacritization
+# Mashkul (مَشْكُول) — Arabic Text Diacritization
 
 Automatically add diacritics (tashkeel / حركات) to Arabic text using a
 character-level BiGRU model trained on the
