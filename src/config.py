@@ -46,8 +46,14 @@ def get_device() -> str:
 
     return "cuda" if torch.cuda.is_available() else "cpu"
 
+@dataclass
+class ModelInfo:
+    model_name = os.getenv("MODEL_NAME", "DiacritizationModelBiGRU")
+    model_version = os.getenv("MODEL_VERSION", "1.0.0")
+    model_description = os.getenv("MODEL_DESCRIPTION", "Arabic Diacritization Model")
 
 DEVICE = get_device()
 data_config = DataConfig()
 model_config = ModelConfig()
 train_config = TrainConfig()
+model_info = ModelInfo()
