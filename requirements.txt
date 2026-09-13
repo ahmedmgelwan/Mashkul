@@ -1,0 +1,4 @@
+datasets==5.0.1
+torch
+torchmetrics==1.9.0
+python-dotenv==1.2.3
